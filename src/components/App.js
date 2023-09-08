@@ -17,13 +17,16 @@ export class App extends Component {
   };
 
 componentDidMount(){
-  const savedContacts = localStorage.getItem('quiz-contacts');
-  console.log(savedContacts)
+  const savedContacts = localStorage.getItem('contacts');
+  if (savedContacts !== null) 
+  {this.setState({contacts: JSON.parse(savedContacts),
+  });
+}
 }
 
   componentDidUpdate (prevState, prevPops)
    {if(prevState.contacts !== this.state.contacts)
-    {localStorage.setItem('quiz-contacts', JSON.stringify(this.state.contacts));
+    {localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
   }
 }
 
